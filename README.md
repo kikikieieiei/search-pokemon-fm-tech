@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pokemon Search
+
+A Next.js app that searches Pokemon using the [Pokemon GraphQL API](https://graphql-pokemon2.vercel.app).
+
+## Tech Stack
+
+- **Next.js 16** (App Router, TypeScript)
+- **Apollo Client** for GraphQL data fetching
+- **Tailwind CSS v4** for styling
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── layout.tsx              # Root layout with Apollo Provider
+│   ├── page.tsx                # Home — search input
+│   └── pokemon/[name]/
+│       └── page.tsx            # Pokemon detail page
+├── components/
+│   ├── ui/                     # Shared UI primitives (Card, Badge, DataTable)
+│   ├── SearchInput.tsx         # Search form with navigation
+│   ├── PokemonResult.tsx       # Composes Header, Stats, Attacks, Evolutions
+│   └── NotFound.tsx            # Not found state
+├── lib/
+│   ├── apollo-client.ts        # Apollo Client singleton
+│   ├── apollo-provider.tsx     # ApolloProvider wrapper
+│   ├── queries.ts              # GraphQL queries
+│   ├── hooks/                  # Custom hooks (usePokemonQuery, usePokemonSearch)
+│   └── utils.ts                # Shared helpers
+├── constants/
+│   └── index.ts                # API URL, route helpers, type colors
+└── types/
+    └── pokemon.ts              # TypeScript interfaces
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Search Pokemon by name
+- View detailed stats: types, height, weight, resistant, weaknesses
+- View fast and special attacks
+- Navigate through evolutions
+- Skeleton loading state
+- Error state with retry
+- Responsive design (mobile + desktop)
