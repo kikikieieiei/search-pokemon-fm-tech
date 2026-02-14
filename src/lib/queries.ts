@@ -11,6 +11,9 @@ export const GET_POKEMON = gql`
       types
       resistant
       weaknesses
+      fleeRate
+      maxCP
+      maxHP
       weight {
         minimum
         maximum
@@ -35,6 +38,10 @@ export const GET_POKEMON = gql`
         id
         name
         image
+      }
+      evolutionRequirements {
+        amount
+        name
       }
     }
   }

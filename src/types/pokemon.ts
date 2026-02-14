@@ -15,6 +15,11 @@ export interface PokemonEvolution {
   image: string;
 }
 
+export interface PokemonEvolutionRequirement {
+  amount: number;
+  name: string;
+}
+
 export interface Pokemon {
   id: string;
   number: string;
@@ -24,6 +29,9 @@ export interface Pokemon {
   types: string[];
   resistant: string[];
   weaknesses: string[];
+  fleeRate: number;
+  maxCP: number;
+  maxHP: number;
   weight: PokemonDimension;
   height: PokemonDimension;
   attacks: {
@@ -31,6 +39,7 @@ export interface Pokemon {
     special: PokemonAttack[];
   };
   evolutions: PokemonEvolution[] | null;
+  evolutionRequirements: PokemonEvolutionRequirement | null;
 }
 
 export interface GetPokemonData {

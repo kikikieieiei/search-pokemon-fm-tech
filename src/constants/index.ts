@@ -5,6 +5,9 @@ export const buildPokemonPath = (name: string) =>
 
 export const DEFAULT_TYPE_COLOR = { bg: "bg-gray-400", text: "text-white" };
 
+export const POKEMON_CACHE_KEY = "pokemon-cache";
+export const POKEMON_CACHE_MAX = 10;
+
 export const TYPE_COLORS: Record<string, { bg: string; text: string }> = {
   Normal: { bg: "bg-gray-400", text: "text-white" },
   Fire: { bg: "bg-red-500", text: "text-white" },

@@ -7,7 +7,15 @@ export default memo(function PokemonStats({
 }: {
   pokemon: Pick<
     Pokemon,
-    "types" | "height" | "weight" | "resistant" | "weaknesses"
+    | "types"
+    | "height"
+    | "weight"
+    | "resistant"
+    | "weaknesses"
+    | "fleeRate"
+    | "maxCP"
+    | "maxHP"
+    | "evolutionRequirements"
   >;
 }) {
   return (
@@ -40,6 +48,35 @@ export default memo(function PokemonStats({
           {pokemon.weight.minimum} – {pokemon.weight.maximum}
         </p>
       </div>
+
+      <div>
+        <h3 className="mb-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
+          Max CP / HP
+        </h3>
+        <p className="text-zinc-700 dark:text-zinc-300">
+          {pokemon.maxCP} / {pokemon.maxHP}
+        </p>
+      </div>
+
+      <div>
+        <h3 className="mb-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
+          Flee Rate
+        </h3>
+        <p className="text-zinc-700 dark:text-zinc-300">
+          {(pokemon.fleeRate * 100).toFixed(0)}%
+        </p>
+      </div>
+
+      {pokemon.evolutionRequirements && (
+        <div>
+          <h3 className="mb-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
+            Evolution Requirement
+          </h3>
+          <p className="text-zinc-700 dark:text-zinc-300">
+            {pokemon.evolutionRequirements.amount} {pokemon.evolutionRequirements.name}
+          </p>
+        </div>
+      )}
 
       <div>
         <h3 className="mb-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
