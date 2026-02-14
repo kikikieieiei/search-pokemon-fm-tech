@@ -1,9 +1,10 @@
+import { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { buildPokemonPath } from "@/constants";
 import type { PokemonEvolution } from "@/types/pokemon";
 
-export default function PokemonEvolutions({
+export default memo(function PokemonEvolutions({
   evolutions,
 }: {
   evolutions: PokemonEvolution[];
@@ -35,4 +36,4 @@ export default function PokemonEvolutions({
       </div>
     </div>
   );
-}
+})

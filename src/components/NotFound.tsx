@@ -1,6 +1,7 @@
+import { memo } from "react";
 import Card from "@/components/ui/Card";
 
-export default function NotFound({ name }: { name: string }) {
+export default memo(function NotFound({ name }: { name: string }) {
   return (
     <Card className="text-center" >
       <div role="alert" className="flex flex-col items-center gap-3">
@@ -28,4 +29,4 @@ export default function NotFound({ name }: { name: string }) {
       </div>
     </Card>
   );
-}
+})

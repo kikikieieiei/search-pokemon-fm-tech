@@ -1,7 +1,8 @@
+import { memo } from "react";
 import Image from "next/image";
 import type { Pokemon } from "@/types/pokemon";
 
-export default function PokemonHeader({
+export default memo(function PokemonHeader({
   pokemon,
 }: {
   pokemon: Pick<Pokemon, "name" | "number" | "image" | "classification">;
@@ -29,4 +30,4 @@ export default function PokemonHeader({
       </div>
     </div>
   );
-}
+})

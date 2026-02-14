@@ -1,7 +1,8 @@
+import { memo } from "react";
 import Badge from "@/components/ui/Badge";
 import type { Pokemon } from "@/types/pokemon";
 
-export default function PokemonStats({
+export default memo(function PokemonStats({
   pokemon,
 }: {
   pokemon: Pick<
@@ -63,4 +64,4 @@ export default function PokemonStats({
       </div>
     </div>
   );
-}
+})

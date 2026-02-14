@@ -1,15 +1,19 @@
 "use client";
 
+import { useCallback } from "react";
 import { usePokemonSearch } from "@/lib/hooks/usePokemonSearch";
 
 export default function SearchInput({ initialValue = "" }: { initialValue?: string }) {
   const { searchTerm, setSearchTerm, handleSearch } =
     usePokemonSearch(initialValue);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    handleSearch();
-  };
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      handleSearch();
+    },
+    [handleSearch]
+  );
 
   return (
     <form onSubmit={handleSubmit} className="flex w-full gap-2">
