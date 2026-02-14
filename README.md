@@ -25,6 +25,7 @@ Open [http://localhost:3000](http://localhost:3000)
 | `npm run build` | Production build |
 | `npm run start` | Start production server |
 | `npm run lint` | Run ESLint |
+| `npm run test` | Run Jest tests |
 
 ## Project Structure
 
@@ -54,10 +55,29 @@ src/
 
 ## Features
 
-- Search Pokemon by name
-- View detailed stats: types, height, weight, resistant, weaknesses
-- View fast and special attacks
-- Navigate through evolutions
-- Skeleton loading state
-- Error state with retry
+- Search Pokemon by name via GraphQL (Apollo Client)
+- View detailed stats: types, height, weight, resistant, weaknesses, max CP/HP, flee rate, evolution requirements
+- View fast and special attacks in sortable tables
+- Navigate through evolutions (click to view)
+- localStorage caching for recently viewed Pokemon (up to 10)
+- Skeleton loading state with animated placeholders
+- Error state with retry button
 - Responsive design (mobile + desktop)
+
+## Performance
+
+- **React.memo** on leaf components to prevent unnecessary re-renders
+- **useMemo / useCallback** for stable references
+- **Suspense** boundary for async content loading
+- **Apollo InMemoryCache** for automatic GraphQL query caching
+- **localStorage** fallback for offline-friendly UX
+
+## Testing
+
+Jest + React Testing Library with mocks for Bulbasaur, Charmander, and Squirtle:
+
+```bash
+npm run test
+```
+
+6 tests covering type assertions and component rendering.
